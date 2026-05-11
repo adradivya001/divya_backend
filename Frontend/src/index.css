@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #0EA5E9;
+  --color-primary-light: #E0F2FE;
+  --color-primary-dark: #0284C7;
+  --color-secondary: #F8FAFC;
+  --color-gray-soft: #F1F5F9;
+  --color-text-main: #0F172A;
+  --color-text-muted: #64748B;
+  
+  --font-sans: 'Figtree', sans-serif;
+  --shadow-premium: 0 10px 40px -10px rgba(15, 23, 42, 0.12), 0 4px 12px -2px rgba(15, 23, 42, 0.04);
+  --shadow-bespoke: 0 20px 60px -15px rgba(15, 23, 42, 0.15);
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #F9FAFB;
+  color: var(--color-text-main);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+/* Base headings for consistency */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+
+.shadow-premium {
+  box-shadow: var(--shadow-premium);
+}
+
+.shadow-bespoke {
+  box-shadow: var(--shadow-bespoke);
+}
+
+.glass-navbar {
+  background: rgba(255, 255, 255, 0.7) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+}
+
+.custom-scrollbar-dark::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar-dark::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar-dark::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 10px;
+}
+
+.custom-scrollbar-dark::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
