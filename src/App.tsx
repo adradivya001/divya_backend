@@ -16,6 +16,10 @@ import { DoctorDashboard } from './pages/dashboard/DoctorDashboard';
 import { ClinicalOverview } from './pages/dashboard/ClinicalOverview';
 import { PatientsOverview } from './pages/dashboard/PatientsOverview';
 import { LeadsOverview } from './pages/dashboard/LeadsOverview';
+import { TriageInbox } from './pages/dashboard/TriageInbox';
+import { ClinicalSchedule } from './pages/dashboard/ClinicalSchedule';
+import { DocumentsVault } from './pages/dashboard/DocumentsVault';
+import { RiskSentinel } from './pages/dashboard/RiskSentinel';
 import { ProtectedRoute } from './components/auth/ProtectedRoute';
 
 function App() {
@@ -52,6 +56,10 @@ function App() {
           <Route path="/dashboard/cro/inbox" element={<CroDashboard />} />
           <Route path="/dashboard/cro/patients" element={<PatientsOverview />} />
           <Route path="/dashboard/cro/leads" element={<LeadsOverview />} />
+          <Route path="/dashboard/cro/triage" element={<TriageInbox />} />
+          <Route path="/dashboard/cro/schedule" element={<ClinicalSchedule />} />
+          <Route path="/dashboard/cro/documents" element={<DocumentsVault />} />
+          <Route path="/dashboard/cro/risk" element={<RiskSentinel />} />
         </Route>
         <Route element={<ProtectedRoute requireRole="nurse" />}>
           <Route path="/dashboard/nurse" element={<NurseDashboard />} />

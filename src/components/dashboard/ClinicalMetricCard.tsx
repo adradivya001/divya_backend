@@ -24,56 +24,53 @@ export function ClinicalMetricCard({
   variant = 'blue',
   delay = 0 
 }: ClinicalMetricCardProps) {
-  const variants = {
-    blue: 'border-l-sky-500 hover:shadow-sky-100/50',
-    red: 'border-l-rose-500 hover:shadow-rose-100/50',
-    green: 'border-l-emerald-500 hover:shadow-emerald-100/50',
-    orange: 'border-l-amber-500 hover:shadow-amber-100/50'
+  
+  const colorMap = {
+    blue: 'blue',
+    red: 'red',
+    green: 'green',
+    orange: 'orange'
   };
 
-  const iconVariants = {
-    blue: 'bg-sky-50 text-sky-600 ring-sky-100',
-    red: 'bg-rose-50 text-rose-600 ring-rose-100',
-    green: 'bg-emerald-50 text-emerald-600 ring-emerald-100',
-    orange: 'bg-amber-50 text-amber-600 ring-amber-100'
-  };
+  const selectedVariant = colorMap[variant] || 'blue';
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      whileHover={{ y: -4, transition: { duration: 0.2 } }}
+      whileHover={{ y: -2, transition: { duration: 0.15 } }}
       transition={{ duration: 0.4, delay }}
-      className={cn(
-        "bg-white p-6 rounded-xl border border-slate-100 shadow-premium border-l-4 transition-all duration-300",
-        variants[variant]
-      )}
+      className={cn("kpi-card", selectedVariant)}
     >
-      <div className="flex justify-between items-start mb-6">
-        <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.15em]">{title}</p>
-        <div className={cn("p-2.5 rounded-2xl ring-4 ring-opacity-30 transition-shadow", iconVariants[variant])}>
+      <div className="kpi-header">
+        <div>
+          <p className="kpi-label uppercase">{title}</p>
+          <h2 className="kpi-value mt-2 flex items-center">
+            {value}
+            {variant === 'red' && <span className="kpi-pulse" />}
+          </h2>
+        </div>
+        <div className={cn("kpi-icon", selectedVariant)}>
           <Icon className="w-5 h-5" />
         </div>
       </div>
 
-      <div className="flex items-baseline gap-3 mb-1.5">
-        <h2 className="text-4xl font-black text-slate-900 tracking-tighter">{value}</h2>
+      <div className="flex items-center justify-between mt-4">
+        {subtitle && (
+          <p className="kpi-sub">
+            {subtitle}
+          </p>
+        )}
         {trend && (
           <div className={cn(
-            "flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-tight shadow-sm",
-            trend.isUp ? "bg-emerald-50 text-emerald-600" : "bg-rose-50 text-rose-600"
+            "kpi-trend",
+            trend.isUp ? "up" : "down"
           )}>
             {trend.isUp ? <TrendingUp className="w-3 h-3" /> : <TrendingDown className="w-3 h-3" />}
-            {trend.value}
+            <span>{trend.value}</span>
           </div>
         )}
       </div>
-
-      {subtitle && (
-        <p className="text-[11px] font-bold text-slate-400/80 tracking-wide">
-          {subtitle}
-        </p>
-      )}
     </motion.div>
   );
 }
